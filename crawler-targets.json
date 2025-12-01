@@ -1,0 +1,7 @@
+{
+  "S3Targets": [
+    {
+      "Path": "s3://wealth-port-al-sash-879515509566-20251201115104/raw/"
+    }
+  ]
+}

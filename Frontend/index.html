@@ -1,0 +1,96 @@
+<!-- frontend/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wealth_Port_AL — Mini Portfolio Tracker</title>
+  <link rel="stylesheet" href="static.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Wealth_Port_AL — Mini Portfolio Tracker</h1>
+    <p class="muted">Live data preview from Athena via the API</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Users (sample)</h2>
+      <div class="controls">
+        <label>Limit:
+          <input id="limit" type="number" value="10" min="1" max="500" />
+        </label>
+        <button id="load">Load</button>
+      </div>
+      <div id="status" class="status">Idle</div>
+      <table id="users-table" class="striped hidden">
+        <thead><tr id="thead"></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </section>
+
+    <section class="panel small">
+      <h3>Actions</h3>
+      <button id="refresh">Refresh</button>
+      <button id="open-api">Open API</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Built with ❤️ — Wealth_Port_AL</small>
+  </footer>
+
+<script>
+const apiBase = window.location.hostname === '127.0.0.1' ? 'http://127.0.0.1:8000' : window.location.origin;
+
+async function loadUsers(limit=10){
+  const status = document.getElementById('status');
+  status.textContent = 'Loading...';
+  try {
+    const res = await fetch(`${apiBase}/users?limit=${limit}`);
+    if(!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    renderTable(data.rows || []);
+    status.textContent = `Loaded ${data.count} rows.`;
+  } catch(err){
+    status.textContent = 'Error: ' + (err.message || err);
+    document.getElementById('users-table').classList.add('hidden');
+  }
+}
+
+function renderTable(rows){
+  const thead = document.getElementById('thead');
+  const tbody = document.getElementById('tbody');
+  thead.innerHTML = '';
+  tbody.innerHTML = '';
+  if(rows.length === 0){
+    document.getElementById('users-table').classList.add('hidden');
+    return;
+  }
+  document.getElementById('users-table').classList.remove('hidden');
+  // header from keys
+  Object.keys(rows[0]).forEach(k=>{
+    const th = document.createElement('th'); th.textContent = k; thead.appendChild(th);
+  });
+  // rows
+  rows.forEach(r=>{
+    const tr = document.createElement('tr');
+    Object.values(r).forEach(v=>{
+      const td = document.createElement('td'); td.textContent = v; tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
+
+document.getElementById('load').addEventListener('click', ()=> {
+  const limit = parseInt(document.getElementById('limit').value || '10', 10);
+  loadUsers(limit);
+});
+document.getElementById('refresh').addEventListener('click', ()=> loadUsers(parseInt(document.getElementById('limit').value||10,10)));
+document.getElementById('open-api').addEventListener('click', ()=> window.open(apiBase + '/docs','_blank'));
+
+// initial load
+loadUsers(10);
+</script>
+</body>
+</html>

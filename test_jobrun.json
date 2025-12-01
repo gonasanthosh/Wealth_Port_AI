@@ -1,0 +1,26 @@
+{
+    "JobRun": {
+        "Id": "jr_9b00f86dfc13cabe03764beb3cd6b9d3457c5a31a9a623959202fabc119a4cc4",
+        "Attempt": 0,
+        "JobName": "wealthport-glue-job",
+        "JobMode": "SCRIPT",
+        "JobRunQueuingEnabled": false,
+        "StartedOn": "2025-12-01T20:26:40.011000+05:30",
+        "LastModifiedOn": "2025-12-01T20:27:26.018000+05:30",
+        "CompletedOn": "2025-12-01T20:27:26.018000+05:30",
+        "JobRunState": "SUCCEEDED",
+        "Arguments": {
+            "--source_s3": "s3://wealth-port-al-sash-879515509566-20251201115104/raw/",
+            "--target_s3": "s3://wealth-port-al-sash-879515509566-20251201115104/processed/test_run_20251201202639/"
+        },
+        "PredecessorRuns": [],
+        "AllocatedCapacity": 10,
+        "ExecutionTime": 28,
+        "Timeout": 2880,
+        "MaxCapacity": 10.0,
+        "WorkerType": "G.1X",
+        "NumberOfWorkers": 10,
+        "LogGroupName": "/aws-glue/jobs",
+        "GlueVersion": "3.0"
+    }
+}

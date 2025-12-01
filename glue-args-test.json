@@ -1,0 +1,4 @@
+{
+  "--source_s3": "s3://wealth-port-al-sash-879515509566-20251201115104/raw/",
+  "--target_s3": "s3://wealth-port-al-sash-879515509566-20251201115104/processed/test_run_20251201202639/"
+}

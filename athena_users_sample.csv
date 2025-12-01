@@ -1,0 +1,4 @@
+"user_id","name","email","country","age"
+"1","Alice","alice@example.com","US","34"
+"2","Bob","bob@example.com","UK","28"
+"3","Charlie","charlie@example.com","IN","45"

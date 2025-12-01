@@ -1,0 +1,14 @@
+{
+  "Name": "wealthport-glue-job",
+  "Role": "arn:aws:iam::879515509566:role/GlueServiceRole-wealthport",
+  "Command": {
+    "Name": "glueetl",
+    "ScriptLocation": "s3://wealth-port-al-sash-879515509566-20251201115104/scripts/glue_etl_job.py",
+    "PythonVersion": "3"
+  },
+  "DefaultArguments": {
+    "--job-language": "python",
+    "--TempDir": "s3://wealth-port-al-sash-879515509566-20251201115104/temp/"
+  },
+  "GlueVersion": "3.0"
+}
