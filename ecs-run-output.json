@@ -1,0 +1,67 @@
+{
+    "tasks": [
+        {
+            "attachments": [
+                {
+                    "id": "d6885333-2bf8-4612-a693-4c9adcb5dca9",
+                    "type": "ElasticNetworkInterface",
+                    "status": "PRECREATED",
+                    "details": [
+                        {
+                            "name": "subnetId",
+                            "value": "subnet-0c2fae6bde95433c0"
+                        }
+                    ]
+                }
+            ],
+            "attributes": [
+                {
+                    "name": "ecs.cpu-architecture",
+                    "value": "x86_64"
+                }
+            ],
+            "availabilityZone": "ap-south-2a",
+            "clusterArn": "arn:aws:ecs:ap-south-2:879515509566:cluster/wealthport-cluster",
+            "containers": [
+                {
+                    "containerArn": "arn:aws:ecs:ap-south-2:879515509566:container/wealthport-cluster/cfa07f86c3fb4a409ca611aac13a072f/c2730ca4-7694-4a2b-a25b-bdb6d14abc79",
+                    "taskArn": "arn:aws:ecs:ap-south-2:879515509566:task/wealthport-cluster/cfa07f86c3fb4a409ca611aac13a072f",
+                    "name": "wealthport-backend",
+                    "image": "879515509566.dkr.ecr.ap-south-2.amazonaws.com/wealthport-backend:latest",
+                    "lastStatus": "PENDING",
+                    "networkInterfaces": [],
+                    "cpu": "0"
+                }
+            ],
+            "cpu": "512",
+            "createdAt": "2025-12-03T13:26:42.229000+05:30",
+            "desiredStatus": "RUNNING",
+            "enableExecuteCommand": false,
+            "group": "family:wealthport-task",
+            "lastStatus": "PROVISIONING",
+            "launchType": "FARGATE",
+            "memory": "1024",
+            "overrides": {
+                "containerOverrides": [
+                    {
+                        "name": "wealthport-backend"
+                    }
+                ],
+                "inferenceAcceleratorOverrides": []
+            },
+            "platformVersion": "1.4.0",
+            "platformFamily": "Linux",
+            "tags": [],
+            "taskArn": "arn:aws:ecs:ap-south-2:879515509566:task/wealthport-cluster/cfa07f86c3fb4a409ca611aac13a072f",
+            "taskDefinitionArn": "arn:aws:ecs:ap-south-2:879515509566:task-definition/wealthport-task:1",
+            "version": 1,
+            "ephemeralStorage": {
+                "sizeInGiB": 20
+            },
+            "fargateEphemeralStorage": {
+                "sizeInGiB": 20
+            }
+        }
+    ],
+    "failures": []
+}

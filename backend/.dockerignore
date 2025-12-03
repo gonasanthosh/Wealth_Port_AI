@@ -1,0 +1,11 @@
+# backend/.dockerignore
+__pycache__
+*.pyc
+.venv
+.env
+*.log
+.git
+.gitignore
+*.csv
+*.zip
+node_modules

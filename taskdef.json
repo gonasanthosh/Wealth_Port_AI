@@ -1,0 +1,32 @@
+{
+  "family": "wealthport-task",
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "memory": "1024",
+  "requiresCompatibilities": ["FARGATE"],
+  "executionRoleArn": "arn:aws:iam::879515509566:role/ecsTaskExecutionRole-wealthport",
+  "containerDefinitions": [
+    {
+      "name": "wealthport-backend",
+      "image": "879515509566.dkr.ecr.ap-south-2.amazonaws.com/wealthport-backend:latest",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 8000, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "BUCKET", "value": "wealth-port-al-sash-879515509566-20251201115104" },
+        { "name": "AWS_REGION", "value": "ap-south-2" },
+        { "name": "ATHENA_DB", "value": "wealthport_athena_db" },
+        { "name": "ATHENA_OUTPUT", "value": "s3://wealth-port-al-sash-879515509566-20251201115104/athena-results/" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/wealthport",
+          "awslogs-region": "ap-south-2",
+          "awslogs-stream-prefix": "backend"
+        }
+      }
+    }
+  ]
+}

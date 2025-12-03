@@ -1,0 +1,2 @@
+
+An error occurred (ValidationError) when calling the CreateLoadBalancer operation: At least two subnets in two different Availability Zones must be specified

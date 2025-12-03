@@ -1,4 +1,9 @@
-fastapi
-uvicorn[standard]
-boto3
-python-dotenv
+fastapi==0.123.4
+uvicorn[standard]==0.23.2
+boto3==1.42.0
+pandas==2.3.3
+scikit-learn==1.7.2
+joblib==1.5.2
+numpy==1.26.4
+python-multipart==0.0.6
+requests==2.31.0
